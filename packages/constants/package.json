@@ -1,0 +1,6 @@
+{
+  "name": "@tak-poidet/constants",
+  "private": true,
+  "license": "MIT",
+  "main": "./index.ts"
+}
