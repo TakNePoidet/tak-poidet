@@ -1,0 +1,38 @@
+:root {
+	--poidet-field-control-color: var(--poidet-color-gray--1000);
+	--poidet-field-control-font-size: 18px;
+	--poidet-field-control-line-height: 130%;
+	--poidet-field-control-font-weight: 400;
+	--poidet-field-control-color--placeholder: var(--poidet-color-gray--600);
+}
+
+@mixin reset {
+	display: block;
+	padding: 0;
+	background: transparent;
+	border: none;
+	outline: none;
+	appearance: none;
+
+	&:-webkit-autofill,
+	&:-webkit-autofill:focus {
+		transition: background-color 600000s 0s, color 600000s 0s;
+	}
+
+	&[data-autocompleted] {
+		background-color: transparent !important;
+	}
+}
+
+@mixin control {
+	@include reset;
+
+	color: var(--poidet-field-control-color);
+	font-weight: var(--poidet-field-control-font-weight);
+	font-size: var(--poidet-field-control-font-size);
+	line-height: var(--poidet-field-control-line-height);
+}
+
+@mixin placeholder {
+	color: var(--poidet-field-control-color--placeholder);
+}

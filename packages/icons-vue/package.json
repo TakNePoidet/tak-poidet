@@ -1,0 +1,22 @@
+{
+	"name": "@tak-poidet/icons-vue",
+	"version": "0.0.0",
+	"type": "module",
+	"main": "./index.ts",
+	"scripts": {
+		"build:generate": "tsx build/generate.ts"
+	},
+	"dependencies": {
+		"vue": "^3.2.41"
+	},
+	"devDependencies": {
+		"fast-glob": "^3.2.12",
+		"tsx": "^3.11.0",
+		"consola": "^2.15.3",
+		"chalk": "^5.1.2",
+		"fs-extra": "^10.1.0",
+		"prettier": "^2.7.1",
+		"@types/prettier": "^2.7.1",
+		"@types/fs-extra": "^9.0.13"
+	}
+}

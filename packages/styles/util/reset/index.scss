@@ -1,0 +1,27 @@
+@mixin button() {
+	margin: 0;
+	padding: 0;
+	font: inherit;
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	appearance: none;
+}
+
+@mixin input {
+	display: block;
+	padding: 0;
+	background: transparent;
+	border: none;
+	outline: none;
+	appearance: none;
+
+	&:-webkit-autofill,
+	&:-webkit-autofill:focus {
+		transition: background-color 600000s 0s, color 600000s 0s;
+	}
+
+	&[data-autocompleted] {
+		background-color: transparent !important;
+	}
+}

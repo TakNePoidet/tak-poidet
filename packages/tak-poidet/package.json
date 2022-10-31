@@ -1,0 +1,15 @@
+{
+	"name": "tak-poidet",
+	"version": "0.0.0",
+	"description": "",
+	"license": "ISC",
+	"main": "index.ts",
+	"dependencies": {
+		"@tak-poidet/components": "file:../components",
+		"@tak-poidet/composables": "file:../composables",
+		"@tak-poidet/utility": "file:../utility",
+		"@tak-poidet/constants": "file:../constants",
+		"@tak-poidet/styles": "file:../styles",
+		"@tak-poidet/icons-vue": "^0.0.0"
+	}
+}

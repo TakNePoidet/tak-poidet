@@ -1,0 +1,12 @@
+@mixin body-regular {
+	font-weight: var(--font-weight-body--regular);
+	font-size: var(--font-size-body);
+	font-family: var(--font-family-body);
+	line-height: var(--line-height-body);
+}
+
+@mixin body-bold {
+	@include body-regular;
+
+	font-weight: var(--font-weight-body--bold);
+}

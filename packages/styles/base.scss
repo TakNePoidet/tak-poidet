@@ -1,0 +1,10 @@
+.tak-poidet,
+.tak-poidet * {
+	box-sizing: border-box;
+	font-family: var(--font-family-primary);
+
+	&::before,
+	&::after {
+		box-sizing: border-box;
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"name": "@tak-poidet/components",
+	"private": true,
+	"license": "MIT",
+	"main": "./index.ts",
+	"dependencies": {
+		"vue": "^3.2.41",
+		"@vueuse/core": "^9.4.0",
+		"@tak-poidet/utility": "file:../utility",
+		"@tak-poidet/composables": "file:../composables",
+		"@tak-poidet/icons-vue": "^0.0.0",
+		"imask": "^6.4.3"
+	}
+}

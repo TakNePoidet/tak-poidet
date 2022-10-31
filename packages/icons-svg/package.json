@@ -1,0 +1,10 @@
+{
+	"name": "@tak-poidet/icons-svg",
+	"version": "1.0.0",
+	"files": [
+		"./svg/*.svg"
+	],
+	"scripts": {
+		"optimize": "svgo -f ./svg -o ./svg"
+	}
+}

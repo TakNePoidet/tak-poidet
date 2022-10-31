@@ -1,0 +1,6 @@
+{
+	"name": "@tak-poidet/styles",
+	"private": true,
+	"license": "MIT",
+	"main": "./index.scss"
+}

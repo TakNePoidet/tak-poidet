@@ -1,6 +1,10 @@
 {
-  "name": "@tak-poidet/utility",
-  "private": true,
-  "license": "MIT",
-  "main": "./index.ts"
+	"name": "@tak-poidet/utility",
+	"private": true,
+	"license": "MIT",
+	"main": "./index.ts",
+	"dependencies": {
+		"vue": "^3.2.41",
+		"@tak-poidet/constants": "file:../constants"
+	}
 }
