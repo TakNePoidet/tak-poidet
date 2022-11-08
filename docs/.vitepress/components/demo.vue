@@ -29,14 +29,7 @@ const decoded = computed(() => {
 <style lang="scss">
 .demo {
 	display: grid;
-	gap: 20px;
-	background: var(--white);
-	padding: 24px;
-	border: 1px solid var(--tp-color-light-gray--200);
-	border-radius: 12px;
-	margin-left: -24px;
-	margin-right: -24px;
-	background: #ffffff;
+	gap: var(--spasing-lg);
 
 	.example-line {
 		display: flex;

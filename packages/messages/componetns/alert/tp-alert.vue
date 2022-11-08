@@ -32,5 +32,3 @@ defineExpose<ExposeMessage<MessageType.Alert>>({
 	hide
 });
 </script>
-
-

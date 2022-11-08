@@ -14,6 +14,12 @@ number/base
 number/clamp
 :::
 
+## Форматирование
+
+:::demo
+number/formatting
+:::
+
 ## Заблокированный
 
 :::demo

@@ -91,14 +91,15 @@ $self: '.tp-input';
 
 		display: block;
 		width: 100%;
-		color: var(--tp-field--controll--color);
-		font-weight: var(--tp-field--controll--font-weight);
-		font-size: var(--tp-field--controll--font-size);
-		line-height: var(--tp-controll--label--line-height);
+		color: var(--tp-field--control--color);
+		font-weight: var(--tp-field--control--font-weight);
+		font-size: var(--tp-field--control--font-size);
+		line-height: var(--tp-field--control--line-height);
 		transition: color 200ms ease-in-out;
+		font-family: var(--tp-field--control--font-family);
 
 		&::placeholder {
-			color: var(--tp-field--controll--placeholder--color);
+			color: var(--tp-field--control--placeholder--color);
 		}
 	}
 }

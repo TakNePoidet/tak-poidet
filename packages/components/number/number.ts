@@ -47,6 +47,13 @@ export function useNumberProps() {
 			type: Boolean as PropType<boolean>,
 			required: false,
 			default: false
+		},
+		formatting: {
+			type: Function as PropType<(value: number) => string>,
+			required: false,
+			default(value: number) {
+				return value.toString();
+			}
 		}
 	});
 }

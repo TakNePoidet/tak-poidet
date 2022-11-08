@@ -6,7 +6,7 @@
 	"main": "./index.ts",
 	"dependencies": {
 		"vue": "^3.2.41",
-		"@vueuse/core" : "^9.4.0",
+		"@vueuse/core": "^9.4.0",
 		"@tak-poidet/constants": "file:../constants"
 	}
 }

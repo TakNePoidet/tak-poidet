@@ -7,3 +7,5 @@ export * from './input';
 export * from './number';
 export * from './radio';
 export * from './checkbox';
+export * from './tabs';
+export * from './tab-item';

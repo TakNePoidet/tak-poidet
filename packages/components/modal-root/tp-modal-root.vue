@@ -115,6 +115,8 @@ watch(
 </script>
 
 <style lang="scss">
+
+
 .tp-modal-root {
 	top: 0;
 	right: 0;

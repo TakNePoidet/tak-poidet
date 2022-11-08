@@ -1,6 +1,9 @@
 <template>
 	<tp-field :id="id" :label="label" :class="classes">
 		<div :class="ns.component('wrapper')">
+			<div :class="[ns.component('value')]">
+				{{ formatValue }}
+			</div>
 			<input
 				:id="id"
 				ref="input"
@@ -43,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, ref, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue';
 import { clamp, createNamespace } from '@tak-poidet/utility';
 import { AngleTop, AngleBottom } from '@tak-poidet/icons-vue';
 import { useRef, useClasses, useFocused, useState, useFocus } from '@tak-poidet/composables';
@@ -138,6 +141,7 @@ function press(type: 'plus' | 'minus') {
 		{ once: true }
 	);
 }
+const formatValue = computed(() => props.formatting(current.value));
 
 watch(
 	() => props.modelValue,
@@ -190,15 +194,30 @@ $self: '.tp-number';
 
 		display: block;
 		width: 100%;
-		color: var(--tp-field--controll--color);
-		font-weight: var(--tp-field--controll--font-weight);
-		font-size: var(--tp-field--controll--font-size);
-		line-height: var(--tp-controll--label--line-height);
-		transition: color 200ms ease-in-out;
+
+		font-family: var(--tp-field--control--font-family);
 
 		&::placeholder {
-			color: var(--tp-field--controll--placeholder--color);
+			color: var(--tp-field--control--placeholder--color);
 		}
+
+		opacity: 0;
+	}
+
+	&__value {
+		position: absolute;
+		left: 0;
+		top: 0;
+		opacity: 1;
+		pointer-events: none;
+	}
+
+	&__value,
+	&__control {
+		color: var(--tp-field--control--color);
+		font-weight: var(--tp-field--control--font-weight);
+		font-size: var(--tp-field--control--font-size);
+		line-height: var(--tp-field--control--line-height);
 	}
 
 	&__counter {
@@ -265,4 +284,15 @@ $self: '.tp-number';
 		color: var(--tp--field--is-disabled--color);
 	}
 }
+
+.tp-field--number.tp-field--is-focus {
+	#{$self}__control {
+		opacity: 1;
+	}
+	#{$self}__value {
+		opacity: 0;
+	}
+}
+
+//&__value,&__control {
 </style>

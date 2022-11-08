@@ -5,5 +5,3 @@
 <script setup lang="ts">
 import { TpNumber, Random } from 'tak-poidet';
 </script>
-
-

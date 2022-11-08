@@ -8,13 +8,15 @@
 
 <script setup lang="ts">
 import { defineProps, computed } from 'vue';
-import { useFieldProps } from './field';
+import { nsField, useFieldProps } from './field';
 
 defineProps({
 	...useFieldProps()
 });
 
 const classes = computed(() => []);
+
+const ns = nsField;
 </script>
 
 <style lang="scss">
@@ -29,11 +31,12 @@ const classes = computed(() => []);
 	--tp-field--label--font-size: var(--font-size-body--small);
 	--tp-field--label--line-height: var(--line-height-body--small);
 	--tp-field--label--color: var(--text--regular);
-	--tp-field--controll--font-weight: var(--font-weight-body);
-	--tp-field--controll--font-size: var(--font-size-body);
-	--tp-field--controll--line-height: var(--line-height-body);
-	--tp-field--controll--color: var(--text--primary);
-	--tp-field--controll--placeholder--color: var(--text--placeholder);
+	--tp-field--control--font-family: var(--font-family-body);
+	--tp-field--control--font-weight: var(--font-weight-body--regular);
+	--tp-field--control--font-size: var(--font-size-body);
+	--tp-field--control--line-height: var(--line-height-body);
+	--tp-field--control--color: var(--text--primary);
+	--tp-field--control--placeholder--color: var(--text--placeholder);
 	--tp--field--is-focus--border-color: var(--color-brand--light-1);
 	--tp--field--is-focus--label--color: var(--color-brand--base);
 	--tp--field--hover--border-color: var(--border--dark);

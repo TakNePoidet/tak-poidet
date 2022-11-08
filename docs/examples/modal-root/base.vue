@@ -12,5 +12,3 @@ import { TpButton, TpModalRoot, useState } from 'tak-poidet';
 
 const [isShow, setIsShow] = useState(false);
 </script>
-
-

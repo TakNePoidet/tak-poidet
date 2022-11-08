@@ -15,5 +15,3 @@ async function confirm() {
 	});
 }
 </script>
-
-

@@ -38,5 +38,3 @@ defineExpose<ExposeMessage<MessageType.Confirm>>({
 	hide
 });
 </script>
-
-

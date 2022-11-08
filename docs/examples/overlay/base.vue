@@ -8,5 +8,3 @@ import { TpButton, TpOverlay, useState } from 'tak-poidet';
 
 const [isShow, setIsShow] = useState(false);
 </script>
-
-

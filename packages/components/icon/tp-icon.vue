@@ -1,11 +1,9 @@
 <template>
-	<component :is="icon"/>
+	<component :is="icon" />
 </template>
 
 <script setup lang="ts">
-import {useIconProps} from './icon';
+import { useIconProps } from './icon';
 
-defineProps({...useIconProps()});
+defineProps({ ...useIconProps() });
 </script>
-
-

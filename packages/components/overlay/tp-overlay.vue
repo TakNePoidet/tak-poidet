@@ -149,7 +149,7 @@ onMounted(() => {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgb(25 60 103 / 65%);
+	//background: rgb(25 60 103 / 65%);
 	cursor: unset;
 }
 
@@ -160,6 +160,7 @@ html.overflow-hidden {
 	body {
 		position: fixed;
 		top: var(--overlay-scroll-position);
+		padding-right: var(--scroll-width-offset);
 		right: 0;
 		bottom: 0;
 		left: 0;
