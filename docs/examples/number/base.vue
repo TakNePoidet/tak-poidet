@@ -1,7 +1,12 @@
 <template>
-	<tp-number :model-value="Random.int(0, 9)" label="Любимая цифра" name="number" />
+	<tp-number :model-value="state.number" label="Любимая цифра" name="number" placeholder="Введите число" />
 </template>
 
 <script setup lang="ts">
-import { TpNumber, Random } from 'tak-poidet';
+import { reactive } from 'vue';
+import { TpNumber } from 'tak-poidet';
+
+const state = reactive({
+	number: undefined
+});
 </script>

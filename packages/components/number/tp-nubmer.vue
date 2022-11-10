@@ -1,9 +1,8 @@
 <template>
 	<tp-field :id="id" :label="label" :class="classes">
 		<div :class="ns.component('wrapper')">
-			<div :class="[ns.component('value')]">
-				{{ formatValue }}
-			</div>
+			<div v-if="typeof current !== 'undefined'" :class="[ns.component('value')]">{{ formatValue }}</div>
+			<div v-else :class="[ns.component('placeholder')]">{{ props.placeholder }}</div>
 			<input
 				:id="id"
 				ref="input"
@@ -29,7 +28,7 @@
 				@mousedown="press('plus')"
 				@click="onChange('plus')"
 			>
-				<angle-top />
+				<angle-top/>
 			</button>
 			<button
 				:disabled="current <= min"
@@ -39,31 +38,31 @@
 				@mousedown="press('minus')"
 				@click="onChange('minus')"
 			>
-				<angle-bottom />
+				<angle-bottom/>
 			</button>
 		</div>
 	</tp-field>
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue';
-import { clamp, createNamespace } from '@tak-poidet/utility';
-import { AngleTop, AngleBottom } from '@tak-poidet/icons-vue';
-import { useRef, useClasses, useFocused, useState, useFocus } from '@tak-poidet/composables';
-import { nsField, TpField } from '../field';
-import { nameComponentNumber, useNumberProps } from './number';
+import {computed, nextTick, onBeforeUnmount, ref, watch} from 'vue';
+import {clamp, createNamespace} from '@tak-poidet/utility';
+import {AngleTop, AngleBottom} from '@tak-poidet/icons-vue';
+import {useRef, useClasses, useFocused, useState, useFocus} from '@tak-poidet/composables';
+import {nsField, TpField} from '../field';
+import {nameComponentNumber, useNumberProps} from './number';
 
-const { focused, onFocus, onBlur } = useFocused();
+const {focused, onFocus, onBlur} = useFocused();
 const input = useRef<HTMLInputElement>();
 const props = defineProps({
 	...useNumberProps()
 });
 const emit = defineEmits<{
-	(e: 'update:modelValue', value: number): void;
+	(e: 'update:modelValue', value: number | undefined): void;
 }>();
 
 const ns = createNamespace(nameComponentNumber);
-const { focus } = useFocus(input);
+const {focus} = useFocus(input);
 const classes = useClasses(() => [
 	nsField.base(),
 
@@ -79,6 +78,9 @@ function format(value: number): number {
 
 const isEqual = (value1?: number, value2?: number) => String(value1) === String(value2);
 const getInitialValue = () => {
+	if (props.modelValue === undefined) {
+		return undefined;
+	}
 	const defaultValue = props.modelValue ?? 0;
 	const value = format(defaultValue);
 
@@ -105,9 +107,14 @@ function onInput(event: InputEvent) {
 function onChange(actionType: 'plus' | 'minus'): void {
 	focus();
 	const diff = actionType === 'minus' ? -props.step : +props.step;
-	const value = format(current.value + diff);
 
-	setValue(value);
+	if (current.value === undefined) {
+		setValue(format(diff));
+	} else {
+		const value = format(current.value + diff);
+
+		setValue(value);
+	}
 }
 
 // eslint-disable-next-line no-undef
@@ -127,7 +134,7 @@ function press(type: 'plus' | 'minus') {
 					clearInterval(interval.value);
 				}
 			},
-			{ once: true }
+			{once: true}
 		);
 	}, 1000);
 
@@ -138,15 +145,20 @@ function press(type: 'plus' | 'minus') {
 				clearTimeout(pressStartTimer.value);
 			}
 		},
-		{ once: true }
+		{once: true}
 	);
 }
-const formatValue = computed(() => props.formatting(current.value));
+
+const formatValue = computed(() => (typeof current.value !== 'undefined' ? props.formatting(current.value) : ''));
 
 watch(
 	() => props.modelValue,
 	(value) => {
-		setCurrent(value);
+		if (typeof value === 'undefined') {
+			setCurrent(undefined);
+		} else {
+			setCurrent(format(value));
+		}
 	}
 );
 watch(current, (value) => {
@@ -176,6 +188,7 @@ onBeforeUnmount(() => {
 	--tp--number--counter--is-hover--color: var(--color-brand--base);
 	--tp--number--counter--is-active--background: var(--color-brand--extra-light);
 	--tp--number--disabled--counter--opacity: var(--opacity-md);
+	--tp--number--placeholder--color: var(--text--placeholder);
 }
 
 $self: '.tp-number';
@@ -204,7 +217,8 @@ $self: '.tp-number';
 		opacity: 0;
 	}
 
-	&__value {
+	&__value,
+	&__placeholder {
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -212,12 +226,17 @@ $self: '.tp-number';
 		pointer-events: none;
 	}
 
+	&__placeholder,
 	&__value,
 	&__control {
 		color: var(--tp-field--control--color);
 		font-weight: var(--tp-field--control--font-weight);
 		font-size: var(--tp-field--control--font-size);
 		line-height: var(--tp-field--control--line-height);
+	}
+
+	&__placeholder {
+		color: var(--tp--number--placeholder--color);
 	}
 
 	&__counter {
@@ -280,7 +299,9 @@ $self: '.tp-number';
 }
 
 .tp-field--number.tp-field--is-disabled {
-	#{$self}__control {
+	#{$self}__control,
+	#{$self}__value,
+	#{$self}__placeholder {
 		color: var(--tp--field--is-disabled--color);
 	}
 }
@@ -289,7 +310,9 @@ $self: '.tp-number';
 	#{$self}__control {
 		opacity: 1;
 	}
-	#{$self}__value {
+
+	#{$self}__value,
+	#{$self}__placeholder {
 		opacity: 0;
 	}
 }

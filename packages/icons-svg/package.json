@@ -6,5 +6,8 @@
 	],
 	"scripts": {
 		"optimize": "svgo -f ./svg -o ./svg"
+	},
+	"devDependencies": {
+		"svgo": "^3.0.0"
 	}
 }

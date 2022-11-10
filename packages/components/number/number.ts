@@ -40,13 +40,18 @@ export function useNumberProps() {
 		},
 		modelValue: {
 			type: Number as PropType<number>,
-			required: true,
-			default: 0
+			required: false,
+			default: undefined
 		},
 		disabled: {
 			type: Boolean as PropType<boolean>,
 			required: false,
 			default: false
+		},
+		placeholder: {
+			type: String as PropType<string>,
+			required: false,
+			default: null
 		},
 		formatting: {
 			type: Function as PropType<(value: number) => string>,
