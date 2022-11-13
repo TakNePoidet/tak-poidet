@@ -1,5 +1,5 @@
 <template>
-	<tp-number :model-value="state.number" label="Любимая цифра" name="number" placeholder="Введите число" />
+	<tp-number  :model-value="state.number" label="Любимая цифра" name="number" placeholder="Введите число" />
 </template>
 
 <script setup lang="ts">

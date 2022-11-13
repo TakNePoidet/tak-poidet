@@ -5,3 +5,4 @@ export * from './use-model';
 export * from './use-ref';
 export * from './use-focus';
 export * from './use-focused';
+export * from './props';

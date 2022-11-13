@@ -1,6 +1,7 @@
 import { PropType } from 'vue';
 import { buildProps, generateId } from '@tak-poidet/utility';
 import { useFieldProps } from '../field';
+import {useDefinePropsMax, useDefinePropsMin, useDefinePropsStep} from "@tak-poidet/composables";
 
 export const nameComponentNumber = 'number';
 const fieldProps = useFieldProps();
@@ -23,21 +24,9 @@ export function useNumberProps() {
 			type: String as PropType<string>,
 			required: true
 		},
-		min: {
-			type: Number as PropType<number>,
-			required: false,
-			default: -Number.MAX_SAFE_INTEGER
-		},
-		max: {
-			type: Number as PropType<number>,
-			required: false,
-			default: Number.MAX_SAFE_INTEGER
-		},
-		step: {
-			type: Number as PropType<number>,
-			required: false,
-			default: 1
-		},
+		...useDefinePropsMin(),
+		...useDefinePropsStep(),
+		...useDefinePropsMax(),
 		modelValue: {
 			type: Number as PropType<number>,
 			required: false,

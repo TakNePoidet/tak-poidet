@@ -4,6 +4,7 @@ import { markdown } from './configs';
 
 export default defineConfig({
 	title: 'ТакПойдет',
+	base: '/tak-poidet/',
 	themeConfig: {
 		logo: '/logo.svg',
 		siteTitle: '',
@@ -33,6 +34,10 @@ export default defineConfig({
 							{
 								text: 'CheckBox',
 								link: '/component/checkbox'
+							},
+							{
+								text: 'Slider',
+								link: '/component/slider'
 							}
 						]
 					},

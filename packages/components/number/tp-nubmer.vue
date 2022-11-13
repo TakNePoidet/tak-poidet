@@ -23,36 +23,32 @@
 			<button
 				:disabled="current >= max"
 				tabindex="-1"
-				@focus="onFocus"
-				@blur="onBlur"
-				@mousedown="press('plus')"
-				@click="onChange('plus')"
+				@mousedown.prevent.stop="press('plus')"
+				@click.prevent.stop="onChange('plus')"
 			>
-				<angle-top/>
+				<angle-top />
 			</button>
 			<button
 				:disabled="current <= min"
 				tabindex="-1"
-				@focus="onFocus"
-				@blur="onBlur"
-				@mousedown="press('minus')"
-				@click="onChange('minus')"
+				@mousedown.prevent.stop="press('minus')"
+				@click.prevent.stop="onChange('minus')"
 			>
-				<angle-bottom/>
+				<angle-bottom />
 			</button>
 		</div>
 	</tp-field>
 </template>
 
 <script setup lang="ts">
-import {computed, nextTick, onBeforeUnmount, ref, watch} from 'vue';
-import {clamp, createNamespace} from '@tak-poidet/utility';
-import {AngleTop, AngleBottom} from '@tak-poidet/icons-vue';
-import {useRef, useClasses, useFocused, useState, useFocus} from '@tak-poidet/composables';
-import {nsField, TpField} from '../field';
-import {nameComponentNumber, useNumberProps} from './number';
+import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue';
+import { clamp, createNamespace } from '@tak-poidet/utility';
+import { AngleTop, AngleBottom } from '@tak-poidet/icons-vue';
+import { useRef, useClasses, useFocused, useState, useFocus } from '@tak-poidet/composables';
+import { nsField, TpField } from '../field';
+import { nameComponentNumber, useNumberProps } from './number';
 
-const {focused, onFocus, onBlur} = useFocused();
+const { focused, onFocus, onBlur } = useFocused();
 const input = useRef<HTMLInputElement>();
 const props = defineProps({
 	...useNumberProps()
@@ -62,7 +58,7 @@ const emit = defineEmits<{
 }>();
 
 const ns = createNamespace(nameComponentNumber);
-const {focus} = useFocus(input);
+const { focus } = useFocus(input);
 const classes = useClasses(() => [
 	nsField.base(),
 
@@ -134,7 +130,7 @@ function press(type: 'plus' | 'minus') {
 					clearInterval(interval.value);
 				}
 			},
-			{once: true}
+			{ once: true }
 		);
 	}, 1000);
 
@@ -145,7 +141,7 @@ function press(type: 'plus' | 'minus') {
 				clearTimeout(pressStartTimer.value);
 			}
 		},
-		{once: true}
+		{ once: true }
 	);
 }
 
